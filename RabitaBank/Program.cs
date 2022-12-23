@@ -33,20 +33,37 @@ namespace RabitaBank
                 goto PINCODE;
             }
 
-
         PINCODE:
             Console.ForegroundColor = ConsoleColor.White;
-            int pin = 4343;
-            Console.Write("PIN KODUNUZU DAXIL EDIN: ");
-            pin = Convert.ToInt32(Console.ReadLine());
-            if (pin != 4343)
+
+            int attempt = 0;
+            int pin;
+            do
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine();
-                Console.WriteLine("       Yanlish Pin! \n");
-                Console.ForegroundColor = ConsoleColor.White;
-                goto PINCODE;
+                Console.Write("PIN KODUNUZU DAXIL EDIN: ");
+                pin = Convert.ToInt32(Console.ReadLine());
+
+                if (pin != 4343)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine();
+                    Console.WriteLine("       Yanlish Pin! \n");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                }
+                else
+                {
+                    goto Language;
+                }
+                attempt++;
             }
+            while (attempt < 3);
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Kartiniz Muveqqeti olaraq bloklandi!!!\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            return;
+
             byte dil;
         Language:
             Console.WriteLine();
