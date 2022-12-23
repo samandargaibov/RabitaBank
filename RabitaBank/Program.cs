@@ -36,12 +36,19 @@ namespace RabitaBank
         PINCODE:
             Console.ForegroundColor = ConsoleColor.White;
 
-            int attempt = 0;
+            byte attempt = 0;
             int pin;
             do
             {
                 Console.Write("PIN KODUNUZU DAXIL EDIN: ");
                 pin = Convert.ToInt32(Console.ReadLine());
+
+                if (pin.ToString().Length != 4)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("       PIN CODE reqem sayi 4 olmalidir! \n");
+                    goto PINCODE;
+                }
 
                 if (pin != 4343)
                 {
@@ -60,7 +67,7 @@ namespace RabitaBank
             while (attempt < 3);
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("Kartiniz Muveqqeti olaraq bloklandi!!!\n");
+            Console.Write("Kartiniz Muveqqeti olaraq bloklandi!!! Daha sonra yeniden cehd edin!\n");
             Console.ForegroundColor = ConsoleColor.White;
             return;
 
