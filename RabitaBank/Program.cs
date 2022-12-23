@@ -89,7 +89,7 @@ namespace RabitaBank
             int mebleg;
             int mobil;
             int valyuta;
-            int tarif = 1;
+            int tarif;
 
             if (dil == 1)
             {
